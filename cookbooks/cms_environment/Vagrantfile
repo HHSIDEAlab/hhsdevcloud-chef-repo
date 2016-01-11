@@ -25,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   # If this value is a shorthand to a box in Vagrant Cloud then
   # config.vm.box_url doesn't need to be specified.
-  config.vm.box = 'chef/ubuntu-14.04'
+  # config.vm.box = 'chef/ubuntu-14.04'
 
 
   # Assign this VM to a host-only network IP, allowing you to access it
@@ -59,12 +59,35 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
 
+  # This AWS config taken from: http://www.cantoni.org/2014/09/22/quick-guide-vagrant-amazon-ec2
+  config.vm.provider :aws do |aws, override|
+    aws.access_key_id = ENV['AWS_KEY']
+    aws.secret_access_key = ENV['AWS_SECRET']
+    aws.keypair_name = ENV['AWS_KEYNAME']
+    aws.ami = "ami-2051294a"
+    aws.region = "us-east-1"
+    aws.instance_type = "t2.micro"
+
+    # Enable SSH access
+    aws.security_groups = ["ssh-only"]
+
+    # Required for RHEL AMIs, per https://github.com/mitchellh/vagrant/issues/1482.
+    config.ssh.pty = true
+
+    # Required for RHEL AMIs, per https://github.com/mitchellh/vagrant-aws/issues/340.
+    aws.user_data = "#!/bin/bash\nsed -i -e 's/^Defaults.*requiretty/# Defaults requiretty/g' /etc/sudoers"
+
+    override.vm.box = "dummy"
+    override.ssh.username = "ec2-user"
+    override.ssh.private_key_path = ENV['AWS_KEYPATH']
+  end
+
   # The path to the Berksfile to use with Vagrant Berkshelf
-  # config.berkshelf.berksfile_path = "./Berksfile"
+  config.berkshelf.berksfile_path = "./Berksfile"
 
   # Enabling the Berkshelf plugin. To enable this globally, add this configuration
   # option to your ~/.vagrant.d/Vagrantfile file
-  config.berkshelf.enabled = true
+  # config.berkshelf.enabled = true
 
   # An array of symbols representing groups of cookbook described in the Vagrantfile
   # to exclusively install and copy to Vagrant's shelf.
