@@ -2,5 +2,3 @@ source "https://supermarket.chef.io"
 
 metadata
 
-cookbook 'java', '~> 1.36.0'
-cookbook 'jira', '~> 2.9.0'

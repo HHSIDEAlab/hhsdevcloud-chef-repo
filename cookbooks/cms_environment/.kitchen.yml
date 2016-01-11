@@ -1,16 +1,34 @@
 ---
 driver:
-  name: vagrant
+  name: ec2
+  region: us-east-1
+  instance_type: t2.micro
+
+  # Note: security_group_ids, aws_ssh_key_id, and ssh_key should be defined in
+  # `$HOME/.kitchen/config.yml`. These values vary for each AWS account.
+  # security_group_ids: ["sg-5973d520", "sg-5f7ed826"]
+  # aws_ssh_key_id: cms-karl
+
+# transport:
+  # ssh_key: ~/workspaces/cms/aws-cms-karl.pem
 
 provisioner:
   name: chef_solo
 
 platforms:
-  - name: ubuntu-14.04
-  - name: centos-7.1
+  - name: rhel-7.2
+    driver:
+      image_id: ami-2051294a
+    transport:
+      username: ec2-user
 
 suites:
   - name: default
     run_list:
       - recipe[cms_environment::default]
     attributes:
+  - name: ldap_server
+    run_list:
+      - recipe[cms_environment::ldap_server]
+    attributes:
+
