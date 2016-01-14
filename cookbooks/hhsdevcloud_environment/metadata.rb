@@ -1,7 +1,6 @@
-name             'cms_environment'
+name             'hhsdevcloud_environment'
 version          '1.0.0'
 license          'Apache v2'
-description      'Installs/Configures cms_environment'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
 # TODO See Berksfile.

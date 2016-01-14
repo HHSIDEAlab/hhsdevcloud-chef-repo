@@ -27,11 +27,11 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[cms_environment::default]
+      - recipe[hhsdevcloud_environment::default]
     attributes:
   - name: ldap_server_and_client
     run_list:
-      - recipe[cms_environment::ldap_server]
-      - recipe[cms_environment::ldap_client]
+      - recipe[hhsdevcloud_environment::ldap_server]
+      - recipe[hhsdevcloud_environment::ldap_client]
     attributes:
 

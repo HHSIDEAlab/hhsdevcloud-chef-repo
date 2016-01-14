@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: cms_environment
+# Cookbook Name:: hhsdevcloud_environment
 # Attributes:: default
 #
 
