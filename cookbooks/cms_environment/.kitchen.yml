@@ -3,9 +3,11 @@ driver:
   name: ec2
   region: us-east-1
   instance_type: t2.micro
+  tags: {Name: "chef-test-kitchen-worker"}
 
   # Note: security_group_ids, aws_ssh_key_id, and ssh_key should be defined in
   # `$HOME/.kitchen/config.yml`. These values vary for each AWS account.
+  # Ensure that 'security_group_ids' is set to allow remote SSH access.
   # security_group_ids: ["sg-5973d520", "sg-5f7ed826"]
   # aws_ssh_key_id: cms-karl
 
@@ -27,8 +29,9 @@ suites:
     run_list:
       - recipe[cms_environment::default]
     attributes:
-  - name: ldap_server
+  - name: ldap_server_and_client
     run_list:
       - recipe[cms_environment::ldap_server]
+      - recipe[cms_environment::ldap_client]
     attributes:
 

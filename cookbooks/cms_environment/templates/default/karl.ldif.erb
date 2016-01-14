@@ -1,0 +1,27 @@
+#
+# Do not modify this file. It is designed to be run exactly once by `ldapmodify`.
+# Instead, add a new file to be run, to the `ldap_server` recipe.
+#
+
+dn: uid=karldavis,ou=people,dc=hhsdevcloud,dc=us
+changetype: add
+objectClass: inetOrgPerson
+objectClass: posixAccount
+uid: karldavis
+cn: Karl M. Davis
+displayName: Karl M. Davis
+givenName: Karl
+sn: Davis
+uidNumber: 10000
+gidNumber: 10000
+userPassword: {SSHA}177xK6YaEmYvdom7b3SSlKWfkqriRR56
+loginShell: /bin/bash
+homeDirectory: /home/karldavis
+mail: karl.davis@cms.hhs.gov
+
+dn: cn=karldavis,ou=groups,dc=hhsdevcloud,dc=us
+changetype: add
+objectClass: posixGroup
+cn: karldavis
+gidNumber: 10000
+

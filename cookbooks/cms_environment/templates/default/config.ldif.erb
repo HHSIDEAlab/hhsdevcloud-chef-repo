@@ -1,0 +1,31 @@
+# Database settings
+dn: olcDatabase=hdb,cn=config
+changetype: add
+objectClass: olcDatabaseConfig
+objectClass: olcHdbConfig
+olcDatabase: {3}hdb
+olcSuffix: dc=hhsdevcloud,dc=us
+olcDbDirectory: /var/lib/ldap
+olcRootDN: cn=admin,dc=hhsdevcloud,dc=us
+olcRootPW: <%= node['openldap']['rootpw'] %>
+olcDbConfig: set_cachesize 0 2097152 0
+olcDbConfig: set_lk_max_objects 1500
+olcDbConfig: set_lk_max_locks 1500
+olcDbConfig: set_lk_max_lockers 1500
+olcDbIndex: objectClass eq
+olcLastMod: TRUE
+olcDbCheckpoint: 512 30
+olcAccess: to attrs=userPassword
+  by dn="cn=admin,dc=hhsdevcloud,dc=us" write
+  by anonymous auth
+  by self write
+  by * none
+olcAccess: to attrs=shadowLastChange
+  by self write
+  by * read
+olcAccess: to dn.base=""
+  by * read
+olcAccess: to *
+  by dn="cn=admin,dc=hhsdevcloud,dc=us" write
+  by * read
+

@@ -1,0 +1,23 @@
+#
+# Do not modify this file. It is designed to be run exactly once by `ldapmodify`.
+# Instead, add a new file to be run, to the `ldap_server` recipe.
+#
+
+dn: dc=hhsdevcloud,dc=us
+changetype: add
+objectClass: top
+objectClass: dcObject
+objectclass: organization
+dc: hhsdevcloud
+o: HHS Dev Cloud
+
+dn: ou=people,dc=hhsdevcloud,dc=us
+changetype: add
+objectClass: organizationalUnit
+ou: people
+
+dn: ou=groups,dc=hhsdevcloud,dc=us
+changetype: add
+objectClass: organizationalUnit
+ou: groups
+ 
