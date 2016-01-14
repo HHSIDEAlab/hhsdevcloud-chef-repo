@@ -34,4 +34,12 @@ suites:
       - recipe[hhsdevcloud_environment::ldap_server]
       - recipe[hhsdevcloud_environment::ldap_client]
     attributes:
+  - name: jira
+    run_list:
+      - recipe[hhsdevcloud_environment::java]
+      - recipe[hhsdevcloud_environment::jira]
+    attributes:
+      jira:
+        jvm:
+          maximum_memory: 768m
 
