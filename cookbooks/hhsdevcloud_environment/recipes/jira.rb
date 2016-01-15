@@ -7,7 +7,7 @@
 #
 
 # Dependency: Java.
-include_recipe 'hhsdevcloud::java'
+include_recipe 'hhsdevcloud_environment::java'
 
 # Install JIRA using the vendor's installer.
 include_recipe 'jira::installer'

@@ -26,7 +26,7 @@ default['openldap']['tls_enabled'] = false
 # Install Oracle's JDK 8
 default['java']['jdk_version'] = '8'
 default['java']['install_flavor'] = 'oracle'
-default['java']['accept_oracle_download_terms'] = true
+default['java']['oracle']['accept_oracle_download_terms'] = true
 
 # Install the JCE extensions for strong crypto
 default['java']['oracle']['jce']['enabled'] = true
