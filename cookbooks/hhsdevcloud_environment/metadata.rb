@@ -3,6 +3,8 @@ version          '1.0.0'
 license          'Apache v2'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
+depends 'database', '~> 4.0.9'
+depends 'postgresql', '>= 1.0.0'
 # TODO See Berksfile.
 #depends 'openldap', '~> 2.2.0'
 depends 'openldap'
