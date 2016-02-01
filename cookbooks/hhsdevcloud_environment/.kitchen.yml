@@ -18,6 +18,11 @@ provisioner:
   name: chef_solo
 
 platforms:
+  - name: ubuntu-14.04
+    driver:
+      image_id: ami-d05e75b8
+    transport:
+      username: ubuntu
   - name: rhel-7.2
     driver:
       image_id: ami-2051294a
@@ -31,18 +36,25 @@ suites:
     attributes:
   - name: ldap_server_and_client
     run_list:
+      - recipe[hhsdevcloud_environment::default]
       - recipe[hhsdevcloud_environment::ldap_server]
       - recipe[hhsdevcloud_environment::ldap_client]
     attributes:
+    includes:
+      - ubuntu-14.04
   - name: java
     run_list:
+      - recipe[hhsdevcloud_environment::default]
       - recipe[hhsdevcloud_environment::java]
     attributes:
   - name: jira
     run_list:
+      - recipe[hhsdevcloud_environment::default]
       - recipe[hhsdevcloud_environment::jira]
     attributes:
       jira:
         jvm:
           maximum_memory: 768m
+    includes:
+      - ubuntu-14.04
 

@@ -3,13 +3,16 @@
 # Instead, add a new file to be run, to the `ldap_server` recipe.
 #
 
-dn: dc=hhsdevcloud,dc=us
-changetype: add
-objectClass: top
-objectClass: dcObject
-objectclass: organization
-dc: hhsdevcloud
-o: HHS Dev Cloud
+# Leaving this in for doc purposes: Ubuntu's 'slapd' installation package will
+# create this for us.
+#
+# dn: dc=hhsdevcloud,dc=us
+# changetype: add
+# objectClass: top
+# objectClass: dcObject
+# objectclass: organization
+# dc: hhsdevcloud
+# o: HHS Dev Cloud
 
 dn: ou=people,dc=hhsdevcloud,dc=us
 changetype: add
@@ -20,4 +23,4 @@ dn: ou=groups,dc=hhsdevcloud,dc=us
 changetype: add
 objectClass: organizationalUnit
 ou: groups
- 
+

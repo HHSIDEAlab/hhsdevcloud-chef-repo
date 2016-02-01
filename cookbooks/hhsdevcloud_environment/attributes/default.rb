@@ -12,8 +12,8 @@
 #
 default['openldap']['basedn'] = 'dc=hhsdevcloud,dc=us'
 default['openldap']['server'] = 'ldap.hhsdevcloud.us'
+# FIXME secure this password
 default['openldap']['rootpw'] = 'hhs_secret'
-default['openldap']['tls_enabled'] = false
 
 
 #
