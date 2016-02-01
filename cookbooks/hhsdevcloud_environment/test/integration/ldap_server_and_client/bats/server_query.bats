@@ -16,7 +16,7 @@
 }
 
 @test "LDAP auth works" {
-  skip "Need a test user and the ability to store its passwor as a secret"
+  skip "Need a test user and the ability to store its password as a secret"
   run ldapsearch -x -D "uid=testuser,ou=people,dc=hhsdevcloud,dc=us" -w "secret_password" -H ldapi:/// -b "dc=hhsdevcloud,dc=us"
   [ "$status" -eq 0 ]
   [[ $output =~ "numEntries: " ]]
