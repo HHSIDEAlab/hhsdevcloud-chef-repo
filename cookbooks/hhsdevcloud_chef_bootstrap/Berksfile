@@ -1,0 +1,11 @@
+# Note: This cookbook needs to be run in `chef-client`'s `--local-mode`, which
+# does not yet support Policyfiles. Accordingly, this cookbook instead uses
+# Berkshelf to manage its dependencies.
+# 
+# Reference: https://github.com/chef/chef-dk/issues/193
+source "https://supermarket.chef.io"
+
+# This cookbook's dependencies are actually specified in the `metadata.rb` 
+# file.
+metadata
+

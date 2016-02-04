@@ -1,0 +1,38 @@
+---
+driver:
+  name: ec2
+  region: us-east-1
+  instance_type: t2.micro
+  tags: {Name: "chef-test-kitchen-worker"}
+
+  # Note: security_group_ids, aws_ssh_key_id, and ssh_key should be defined in
+  # `$HOME/.kitchen/config.yml`. These values vary for each AWS account.
+  # Ensure that 'security_group_ids' is set to allow remote SSH access.
+  # security_group_ids: ["sg-5973d520", "sg-5f7ed826"]
+  # aws_ssh_key_id: cms-karl
+
+# transport:
+  # ssh_key: ~/workspaces/cms/aws-cms-karl.pem
+
+provisioner:
+  name: policyfile_zero
+
+## require_chef_omnibus specifies a specific chef version to install. You can
+## also set this to `true` to always use the latest version.
+## see also: https://docs.chef.io/config_yml_kitchen.html
+
+#  require_chef_omnibus: 12.5.0
+
+platforms:
+  - name: ubuntu-14.04
+    driver:
+      image_id: ami-d05e75b8
+    transport:
+      username: ubuntu
+
+# Because `Policyfile.rb` is being used instead of run lists, this suite will
+# apply the recipes and attributes defined in `Policyfile.rb`.
+suites:
+  - name: default
+    attributes:
+

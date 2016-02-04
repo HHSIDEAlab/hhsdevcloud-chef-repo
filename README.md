@@ -41,7 +41,7 @@ TODO
 
 ### Deploying: Phase 3: Provisioning Everything Else
 
-Chef client's "local mode" (Chef Zero) can be used to run the `hhsdevcloud_environment::provision` recipe, which will creat and configure all of the other AWS services and instances.
+Chef client's "local mode" (Chef Zero) can be used to run the `hhsdevcloud_environment::provision` recipe, which will create and configure all of the other AWS services and instances.
 
 Chef Client's local mode requires all of the cookbooks that will be run and their dependencies to be on the local drive, in a `cookbooks/` directory that is a child of the current working directory. Accordingly, the dependent cookbooks must be pulled in via [Berkshelf](http://berkshelf.com/):
 
