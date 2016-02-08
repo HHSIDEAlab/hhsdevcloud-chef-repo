@@ -19,7 +19,7 @@ Before this repository can be used at all, though, your system must be configure
 
 That's enough for now. Note that there are more install instructions on [Learn Chef: Install the Chef DK](https://docs.chef.io/install_dk.html) to follow, once a Chef server is up & running. For now, though, we'll be using the ChefDK standalone.
 
-In addition, the workstation needs to be configured to properly authenticate to AWS, where the VMs will be created. In order to do this, you'll need two things from the AWS console:
+Next, the workstation needs to be configured to properly authenticate to AWS, where the VMs will be created. In order to do this, you'll need two things from the AWS console:
 
 1. An access key (ID and secret), which can be created in IAM, as follows: [Creating, Disabling, and Deleting Access Keys for your AWS Account](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html).
 2. An EC2 key pair, which can be created in the AWS console, as follows: [Amazon EC2 Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).
@@ -33,7 +33,11 @@ The access key needs to be referenced in a local file along with the AWS region 
     aws_access_key_id=somestring
     aws_secret_access_key=some+longer+string
 
-TODO: chef local mode (used to be called Chef Zero, which itself was a replacement for Chef Solo).
+In addition, [Terraform](https://www.terraform.io/) needs to be installed, as it will be used to provision the VMs and other resources in the network. (Those VMs will then be configured and managed by Chef; Terraform just handles getting them created.) Terraform is just distributed as a ZIP, so it can be installed as follows:
+
+    $ wget --directory-prefix=/home/karl/workspaces/tools/installers https://releases.hashicorp.com/terraform/0.6.11/terraform_0.6.11_linux_amd64.zip
+    $ unzip -d ~/workspaces/tools/terraform_0.6.11_linux_amd64 ~/workspaces/tools/installers/terraform_0.6.11_linux_amd64.zip
+    $ echo 'export PATH=${PATH}:~/workspaces/tools/terraform_0.6.11_linux_amd64' >> ~/.bashrc
 
 ### Deploying: Phase 2: Provisioning the Chef Server
 
